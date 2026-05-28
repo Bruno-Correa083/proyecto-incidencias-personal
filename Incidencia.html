@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Incidencia</title>
+    <link rel="stylesheet" href="CSS/styles.css">
+</head>
+
+<body id="Sube">
+
+<header>
+    <h1>Ticket</h1>
+    
+    <button type="button" id="btnMenu" class="btnMenu">
+        ☰
+    </button>
+    <nav class="NavegaMenu">  
+    <ul class="menu">
+        
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="Incidencia.html">Contacto</a></li>
+        <li><a href="Nosotros.html">Nosotros</a></li>
+    </ul>
+    </nav>
+   
+</header>
+
+<section>
+   
+    <ul class="operaciones">
+    <ul class="formulario">
+    <div class="logo">
+       
+ 
+    <h2>Formulario de consulta</h2>
+        <button type="button" id="btnAltaUsuario" class="btnAltaUsuario">
+        Abrir formulario
+        </button><br/>
+         <button type="button" id="btnCerrarAltaUsuario" class="btnCerrarAltaUsuario">
+            Cerrar formulario
+            </button>
+        <div class="formularioAltaUsuario">
+                      
+            <nav class="logo">
+    <label>Nombre:</label> 
+    <input type="text" name="nombre" placeholder="Tu nombre" required autocomplete="given-name"><br/>
+
+    <label>Apellido:</label>
+    <input type="text" name="apellido" placeholder="Tu apellido" autocomplete="family-name" required><br/>
+
+    <label>Cedula:</label>
+    <input type="number" name="cedula" placeholder="12345678" pattern="[0-9]{9}" inputmode="numeric" autocomplete="cc-number" required><br/>
+
+    <label>Laboratorio:</label>
+    <input type="password" name="contrasena" placeholder="Tu contraseña" autocomplete="current-password" required><br/>
+
+    <label>Tipo de consulta:</label>
+    <select name="tipo" required>
+                    <option value="">Seleccionar</option>
+                    <option>Catálogo</option>
+                    <option>Repuestos</option>
+                    <option>Desperfectos</option>
+    </select><br/>
+
+    <label>Descripción:</label>
+    <textarea name="descripcion"
+        placeholder="Explicá bien qué necesitás..."
+        rows="5" required>
+    </textarea><br/>
+
+    <button type="submit">Enviar consulta</button>
+            </nav>
+    </div>
+</div>
+    </ul>
+    </ul>
+</section>
+
+<section>
+        <div>
+    <a href="index.html">
+        <button>Volver al inicio</button>
+    </a>
+   <a href="#Sube" class="Sube">
+      <button type="button">↑ Subir</button>
+    </a>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Todo en Blanco</p>
+</footer>
+<script src="Javascript/operarElAdministrador.js"></script>
+</body>
+</html>
