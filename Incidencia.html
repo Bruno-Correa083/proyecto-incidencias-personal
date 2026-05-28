@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Incidencia</title>
-    <link rel="stylesheet" href="CSS/styles.css">
+    <link rel="stylesheet" href="assets/style/style.css">
 </head>
 
 <body id="Sube">
@@ -18,7 +18,7 @@
     <ul class="menu">
         
         <li><a href="index.html">Inicio</a></li>
-        <li><a href="Incidencia.html">Contacto</a></li>
+        <li><a href="Incidencia.html">Incidencia</a></li>
         <li><a href="Nosotros.html">Nosotros</a></li>
     </ul>
     </nav>
@@ -52,19 +52,28 @@
     <input type="number" name="cedula" placeholder="12345678" pattern="[0-9]{9}" inputmode="numeric" autocomplete="cc-number" required><br/>
 
     <label>Laboratorio:</label>
-    <input type="password" name="contrasena" placeholder="Tu contraseña" autocomplete="current-password" required><br/>
-
-    <label>Tipo de consulta:</label>
-    <select name="tipo" required>
+    <select name="laboratorio" required>
                     <option value="">Seleccionar</option>
-                    <option>Catálogo</option>
-                    <option>Repuestos</option>
-                    <option>Desperfectos</option>
+                    <option>Laboratorio 1</option>
+                    <option>Laboratorio 2</option>
+                    <option>Laboratorio 3</option>
+                    <option>Laboratorio 4</option>
+                    <option>Laboratorio 5</option>
+                    <option>Laboratorio 6</option>
     </select><br/>
 
-    <label>Descripción:</label>
+    <label>¿Cual es el problema?:</label>
+    <select name="tipo" required>
+                    <option value="">Seleccionar</option>
+                    <option>No prende</option>
+                    <option>No funcionan los perifericos</option>
+                    <option>Aparece algun error</option>
+                    <option>Otro</option>
+    </select><br/>
+
+    <label>En el caso que hayas eligido otro, explica cual es:</label>
     <textarea name="descripcion"
-        placeholder="Explicá bien qué necesitás..."
+        placeholder="Escribe tu problema aquí..."
         rows="5" required>
     </textarea><br/>
 
@@ -88,8 +97,8 @@
 </section>
 
 <footer>
-    <p>© 2026 Todo en Blanco</p>
+    <p>© 2026 YoAyudo</p>
 </footer>
-<script src="Javascript/operarElAdministrador.js"></script>
+<script src="JS/administrador.js"></script>
 </body>
 </html>
