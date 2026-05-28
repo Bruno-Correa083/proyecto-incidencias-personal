@@ -255,7 +255,7 @@ label {
     display: flex;
 }
 
-@media screen and (max-width:480px){
+@media (max-width:576px){
 
     body{
         font-size: 14px;
@@ -268,13 +268,13 @@ label {
 
     .btnMenu{
         display: block;
-        width: 100%;
+        width: 50%;
         text-align: right;
     }
 
     .NavegaMenu, .btnformularioAltaUsuario, .btncerrarAltaUsuario{
         display: none;
-        width: 100%;
+        width: 50%;
         flex-direction: column;
     }
 
@@ -292,15 +292,6 @@ label {
     .menu li a{
         display: block;
         width: 100%;
-    }
-
-    .productos{
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .testimonios{
-        flex-direction: column;
     }
 
     label{

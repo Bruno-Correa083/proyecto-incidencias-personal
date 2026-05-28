@@ -38,13 +38,9 @@ if(btnGuardarEmpleado){
 
         const apellidoIngresado = document.getElementById("apellido").value;
 
-        const telefonoIngresado = document.getElementById("telefono").value;
+        const cedulaIngresada = document.getElementById("cedula").value;
 
-        const emailIngresada = document.getElementById("email").value;
-
-        const contrasenaIngresada = document.getElementById("contrasena").value;
-
-        const cargoIngresado = document.getElementById("cargo").value;
+        const laboratorioIngresado = document.getElementById("laboratorio").value;
 
         const tipoDeConsulta = document.getElementById("tipoDeConsulta").value;
 
@@ -57,13 +53,9 @@ if(btnGuardarEmpleado){
 
             apellido: apellidoIngresado,
 
-            telefono: telefonoIngresado,
+            cedula: cedulaIngresada,
 
-            email: emailIngresada,
-
-            contrasena: contrasenaIngresada,
-
-            cargo: cargoIngresado,
+            laboratorio: laboratorioIngresado,
 
             tipoDeConsulta: tipoDeConsulta,
 
@@ -89,11 +81,9 @@ if(btnGuardarEmpleado){
 
             <p><strong>Apellido:</strong> ${formularioGuardado.apellido}</p>
 
-            <p><strong>Teléfono:</strong> ${formularioGuardado.telefono}</p>
+            <p><strong>Cedula:</strong> ${formularioGuardado.cedula}</p>
 
-            <p><strong>Email:</strong> ${formularioGuardado.email}</p>
-
-            <p><strong>Cargo:</strong> ${formularioGuardado.cargo}</p>
+            <p><strong>Laboratorio:</strong> ${formularioGuardado.laboratorio}</p>
 
             <p><strong>Tipo:</strong> ${formularioGuardado.tipoDeConsulta}</p>
 
@@ -103,64 +93,9 @@ if(btnGuardarEmpleado){
 
         `;
 
-        // Agregar al body
         document.body.appendChild(contenedor);
 
         alert("Formulario guardado correctamente");
-
-    });
-
-}
-
-/* formulario trabajo (solo trabajos) */
-const formulario = document.getElementById("formTrabajo");
-
-if(formulario){
-
-    formulario.addEventListener("submit", function(evento){
-
-        // Evita recargar la página
-        evento.preventDefault();
-
-        // Obtener valores
-        const email = document.getElementById("email").value;
-
-        const sobreVos = document.getElementById("sobreVos").value;
-
-        const archivo = document.getElementById("archivo").files[0];
-
-        const aceptacion = document.getElementById("aceptacion").checked;
-
-        // Verificar checkbox
-        if(!aceptacion){
-
-            alert("Debes aceptar ser contactado por la empresa");
-
-            return;
-
-        }
-
-        // Crear objeto postulacion
-        const postulacion = {
-
-            email: email,
-
-            sobreVos: sobreVos,
-
-            archivo: archivo ? archivo.name : "Sin archivo",
-
-            aceptacion: aceptacion
-
-        };
-
-        // Mostrar datos
-        console.log(postulacion);
-
-        // Mensaje
-        alert("CV enviado correctamente");
-
-        // Limpiar formulario
-        formulario.reset();
 
     });
 
