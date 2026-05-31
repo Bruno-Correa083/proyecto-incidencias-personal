@@ -14,14 +14,12 @@ document.getElementById("btnMenu").addEventListener("click", function () {
 
 });
 
-/*formulario abierto(solo contactos)*/
 document.getElementById("btnAltaUsuario").addEventListener("click", function () {
 
     document.querySelector(".formularioAltaUsuario").style.display = "block";
 
 });
 
-/*formulario cerrado(solo contactos)*/
 document.getElementById("btnCerrarAltaUsuario").addEventListener("click", function () {
 
     document.querySelector(".formularioAltaUsuario").style.display = "none";
@@ -46,7 +44,6 @@ if(btnGuardarEmpleado){
 
         const descripcionIngresada = document.getElementById("descripcion").value;
 
-        // Crear objeto empleado
         const formularioGuardado = {
 
             nombre: nombreIngresado,
@@ -65,14 +62,12 @@ if(btnGuardarEmpleado){
 
         console.log("Formulario guardado:", formularioGuardado);
 
-        // Cerrar formulario
         console.log(formularioGuardado).style.display = "none";
 
         const contenedor = document.createElement("div");
 
         contenedor.classList.add("consultaGuardada");
 
-        // Crear contenido
         contenedor.innerHTML = `
 
             <h3>Consulta guardada</h3>
