@@ -2,7 +2,10 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+<<<<<<< HEAD
     font-family: Arial, sans-serif;
+=======
+>>>>>>> 7c0461c50ced143774390e558d4f98d33314457e
 }
 
 body {
@@ -26,8 +29,13 @@ p{
     
 }
 i{
+<<<<<<< HEAD
     display: block;
     text-align: center;
+=======
+  
+    margin: 0 525px;
+>>>>>>> 7c0461c50ced143774390e558d4f98d33314457e
 }
 
 li {
@@ -38,7 +46,11 @@ li {
 }
 
 header {
+<<<<<<< HEAD
     background-color: #8899a5;
+=======
+    background-color: #949494;
+>>>>>>> 7c0461c50ced143774390e558d4f98d33314457e
     color: white;
     font-size: 18px;
     padding: 20px;
@@ -46,6 +58,7 @@ header {
     margin: 0 15px;
     display: flex;
     align-items: center;
+<<<<<<< HEAD
     flex-wrap: wrap;
 }
 
@@ -92,11 +105,44 @@ nav{
 }
 
 .menu li a{
+=======
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+nav {
+    background-color: #3fe4db;
+    padding: 20px;
+    border-radius: 20px;
+   
+}
+nav .logo{
+    background-color: #69bdf1;
+    padding: 20px;
+    border-radius: 20px;
+    justify-content: center;
+    
+}
+
+.menu {
+    list-style: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    padding: 0;
+}
+
+.menu li a {
+>>>>>>> 7c0461c50ced143774390e558d4f98d33314457e
     color: rgb(213, 248, 255);
     text-decoration: none;
     font-size: 16px;
     padding: 10px 15px;
     border-radius: 5px;
+<<<<<<< HEAD
     transition: all 0.3s ease;
     display: block;
 }
@@ -105,6 +151,14 @@ nav{
     background-color: #50e8ff;
     color: rgb(88, 138, 255);
     transform: translateY(-2px);
+=======
+    transition: 0.3s;
+}
+
+.menu li a:hover {
+    background-color: #50e8ff;
+    color: rgb(88, 138, 255);
+>>>>>>> 7c0461c50ced143774390e558d4f98d33314457e
 }
 
 .login-form{
@@ -139,6 +193,7 @@ section {
     margin: 15px;
     padding: 20px;
     border-radius: 10px;
+<<<<<<< HEAD
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
@@ -177,16 +232,66 @@ button, .btn, .Sube{
     cursor: pointer;
     text-decoration: none;
     display: inline-block;
+=======
+}
+.logo{
+    
+    
+    justify-content: left;
+    border-radius: 10px;
+}
+.imagenLogo{
+    width: 500px;
+    height: 250px;
+    display: flex;
+    justify-content: right;
+    border-radius: 10px;
+    margin: 0 350px;
+}
+
+.imagen{
+    width: 250px;
+    height: 250px;
+    border-radius: 10px;
+}
+
+button {
+    background-color: #6d6d6d;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px; 
+    margin: 20px;
+    border-radius: 5px;
+    transition: 0.3s;
+    top:20px;
+    left: 40px; 
+    max-width: 200px;
+    bottom: 20px;
+}
+
+button:hover {
+    background-color: #b0b0b0;
+>>>>>>> 7c0461c50ced143774390e558d4f98d33314457e
 }
 
 ul {
     list-style: none;
+<<<<<<< HEAD
     margin-bottom: 10px;
      
 }
 
 footer {
     background-color: #0072c3;
+=======
+    padding-left: 0;
+    margin-bottom: 10px;
+}
+
+footer {
+    background-color: #a2d8ff;
+>>>>>>> 7c0461c50ced143774390e558d4f98d33314457e
     color: white;
     text-align: center;
     margin: 15px;
@@ -194,6 +299,7 @@ footer {
     border-radius: 10px;
 }
 
+<<<<<<< HEAD
 form h1 {
     color: #11413a;
     font-size: 100px;
@@ -214,12 +320,19 @@ h1 {
 }
 
 
+=======
+form h1, form h2, form h3 {
+    color: #11413a;
+}
+
+>>>>>>> 7c0461c50ced143774390e558d4f98d33314457e
 .input-container {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
+<<<<<<< HEAD
 input, textarea, select{
     padding: 10px;
     outline: none;
@@ -230,6 +343,15 @@ input, textarea, select{
     font-size: 16px;
     background-color: #36e8ff;
     box-shadow: 0 0 5px rgba(38,107,181,.5);
+=======
+input, textarea, select {
+    width: 100%;
+    background-color: #96e6e4;
+    padding: 10px;
+    border-radius: 5px;
+    justify-content: left;
+    border: 1px solid #ccc;
+>>>>>>> 7c0461c50ced143774390e558d4f98d33314457e
 }
 
 table {
@@ -273,10 +395,19 @@ form div{
 label {
     font-weight: bold;
     color: #000;
+<<<<<<< HEAD
     width: 100%;
     max-width: 400px;
 }
 
+=======
+    width: 400px;
+}
+
+.btnMenu, .btnformularioAltaUsuario, .btncerrarAltaUsuario{
+    display: none;
+}
+>>>>>>> 7c0461c50ced143774390e558d4f98d33314457e
 .btnMenu{
     display: block;
     font-size: 28px;
@@ -284,14 +415,20 @@ label {
     border: none;
     color: white;
     cursor: pointer;
+<<<<<<< HEAD
     padding: 10px 15px;
     border-radius: 5px;
+=======
+>>>>>>> 7c0461c50ced143774390e558d4f98d33314457e
 }
 
 .NavegaMenu{
     display: flex;
+<<<<<<< HEAD
     flex-direction: column;
     width: 100%;
+=======
+>>>>>>> 7c0461c50ced143774390e558d4f98d33314457e
 }
 
 @media (max-width:576px){
@@ -303,6 +440,7 @@ label {
     header{
         flex-direction: column;
         gap: 15px;
+<<<<<<< HEAD
         background-color: #8899a5;
         color: white;
         font-size: 18px;
@@ -312,6 +450,8 @@ label {
         display: flex;
         align-items: center;
         flex-wrap: wrap;
+=======
+>>>>>>> 7c0461c50ced143774390e558d4f98d33314457e
     }
 
     .btnMenu{
@@ -321,12 +461,17 @@ label {
     }
 
     .NavegaMenu, .btnformularioAltaUsuario, .btncerrarAltaUsuario{
+<<<<<<< HEAD
         display: flex;
+=======
+        display: none;
+>>>>>>> 7c0461c50ced143774390e558d4f98d33314457e
         width: 100%;
         flex-direction: column;
     }
 
     .menu{
+<<<<<<< HEAD
         display: none;
         flex-direction: column;
         width: 100%;
@@ -337,6 +482,11 @@ label {
     .menu.abierto{
         display: flex;
         justify-content: center;
+=======
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+>>>>>>> 7c0461c50ced143774390e558d4f98d33314457e
     }
 
     .menu li{
@@ -347,7 +497,10 @@ label {
     .menu li a{
         display: block;
         width: 100%;
+<<<<<<< HEAD
         padding: 10px;
+=======
+>>>>>>> 7c0461c50ced143774390e558d4f98d33314457e
     }
 
     label{
@@ -358,6 +511,7 @@ label {
         width: 100%;
         height: auto;
     }
+<<<<<<< HEAD
     .logo{
     flex-direction: row;
     width: 100%;
@@ -402,3 +556,12 @@ label {
     margin-bottom: 8px;
 }
 
+=======
+}
+
+.Sube{
+    
+    bottom: 20px;
+    right: 20px;
+}
+>>>>>>> 7c0461c50ced143774390e558d4f98d33314457e
