@@ -7,22 +7,23 @@
 </head>
 <body id="Sube">
 <header>
-    <h1>SGRSI</h1>
+            <h1>SGRSI</h1>
+             <button type="button" id="btnMenu" class="btnMenu" aria-label="Abrir menú">
+                ☰
+            </button>
     <nav class="NavegaMenu">
-    <ul class="menu">
+    <ul class="menu" id="menu">
         <li><a href="index.html">Inicio</a></li>
         <li><a href="incidencia.html">Incidencia</a></li>
         <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="trabajo.html">Trabajo</a></li>
     </ul>
     </nav>
     <div class="imagenes">
-    <ul>
-    <img class="imagenLogo" src="assets/img/logo.png" alt="Logo"><br/>
-    <p><i>Frase de la empresa</i></p>
-    </ul>
+        <img class="imagenLogo" src="assets/img/logo.png" alt="Logo de SGRSI">
+        <p class="slogan"><i>Ayuda para ti, siempre.</i></p>
     </div>
 </header>
-
 <section>
     
         <div>
@@ -45,7 +46,7 @@
 
 <section>
             <h2>¿Cómo funciona?</h2>
-            <p>El docente realiza un formulario donde va a
+            <p>El coordinador/docente realiza un formulario donde va a
                 registrar informaciion relevante, como el tipo de problema, 
                 la descripcion del mismo y el laboratorio afectado. Luego,
                 el equipo de soporte informatico revisa las incidencias 
@@ -71,23 +72,16 @@
 <section class="boton">
         <div>
     <ul class="border-box">
-    <a href="incidencia.html">
-        <button type="button">Incidencia</button><br/>
+    <a href="incidencia.html" class="btn">Incidencia</a>
+    <a href="tecnicos.html" class="btn">Ingresa tecnico</a>
     </a>
-     <a href="tecnicos.html">
-        <button type="button">Ingresa tecnico</button><br/>
-    </a>
-     <a href="#Sube" class="Sube">
-      <button type="button">↑ Subir</button>
-    </a>
-    </ul>
-    
-    </ul>
+     <a href="#Sube" class="Sube">↑ Subir</a>
+</ul>
         </div>
 </section>
 
 <footer>
-    <p>© 2026 YoAyudo</p>
+    © 2026 YoAyudo - Plataforma de Gestión y Seguimiento de Solicitudes e Incidencias
 </footer>
 <script src="JS/administrador.js"></script>
 </body>
