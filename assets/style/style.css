@@ -56,7 +56,6 @@ nav{
     background-color: #69bdf1;
     padding: 20px;
     border-radius: 20px;
-    text-align: center;
 }
 
 .nav-container{
@@ -66,83 +65,11 @@ nav{
     flex-wrap: wrap;
 }
 
-.logo{
-    
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
-
-.menu{
-    display: none;
-    list-style: none;
-    gap: 20px;
-    width: 100%;
-    background-color: grey;
-    border-radius: 5px;
-    padding: 10px;
-    text-align: center;
-}
-
-.menu.abierto{
-    display: flex;
-    justify-content: center;
-}
-
-.menu li{
-    margin: 0;
-}
-
-.menu li a{
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
-nav {
-    background-color: #3fe4db;
-    padding: 20px;
-    border-radius: 20px;
-   
-}
 nav .logo{
-    background-color: #69bdf1;
+    background-color: #217ab2;
     padding: 20px;
     border-radius: 20px;
-    justify-content: center;
     
-}
-
-.menu {
-    list-style: none;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-
-    padding: 0;
-}
-
-.menu li a {
-    color: rgb(213, 248, 255);
-    text-decoration: none;
-    font-size: 16px;
-    padding: 10px 15px;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-    display: block;
-}
-
-.menu li a:hover{
-    background-color: #50e8ff;
-    color: rgb(88, 138, 255);
-    transform: translateY(-2px);
-    transition: 0.3s;
-}
-
-.menu li a:hover {
-    background-color: #50e8ff;
-    color: rgb(88, 138, 255);
 }
 
 .login-form{
@@ -180,29 +107,46 @@ section {
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-
-.imagenLogo{
-    width: 100%;
-    max-width: 300px;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-    border-radius: 10px;
+.logo{
+    width:100%;
+    display:center;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
 }
 
-.imagen{
-    width: 250px;
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
+.imagenLogo{
+    width:100%;
+    max-width:500px;
+    height:auto;
+    display:block;
+    margin:20px auto;
+    border-radius:10px;
+}
+
+.slogan{
+    text-align:center;
+    font-size:24px;
+    font-weight:bold;
+    color:#11413a;
+    margin-top:15px;
 }
 
 .imagenes{
-    width: 100%;
-    text-align: center;
-    margin-top: 20px;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+    margin-top:20px;
 }
 
+.slogan i{
+    display:inline;
+    margin:0;
+}
 button, .btn, .Sube{
     background-color: #6d6d6d;
     color: white;
@@ -215,20 +159,6 @@ button, .btn, .Sube{
     cursor: pointer;
     text-decoration: none;
     display: inline-block;
-}
-.logo{
-    
-    
-    justify-content: left;
-    border-radius: 10px;
-}
-.imagenLogo{
-    width: 500px;
-    height: 250px;
-    display: flex;
-    justify-content: right;
-    border-radius: 10px;
-    margin: 0 350px;
 }
 
 .imagen{
@@ -351,102 +281,117 @@ label {
     max-width: 400px;
 }
 
+.NavegaMenu{
+    width:100%;
+    background-color:#3fe4db;
+    padding:20px;
+    border-radius:20px;
+    display:center;
+}
 
-.btnMenu, .btnformularioAltaUsuario, .btncerrarAltaUsuario{
-    display: none;
+.menu{
+    display:none;
+    flex-direction:column;
+    width:100%;
+    background:#6d6d6d;
+    color:white;
+    padding:20px;
+}
+.menu li{
+    margin:0;
+}
+
+.menu li a{
+    color:rgb(213,248,255);
+    text-decoration:none;
+    font-size:16px;
+    padding:10px 15px;
+    border-radius:5px;
+    display:block;
+    transition:0.3s;
+}
+
+.menu li a:hover{
+    background-color:#50e8ff;
+    color:rgb(88,138,255);
 }
 
 .btnMenu{
-    display: block;
-    font-size: 28px;
-    background: #6d6d6d;
-    border: none;
-    color: white;
-    cursor: pointer;
-
-    padding: 10px 15px;
-    border-radius: 5px;
-
+    display:block;
+    font-size:28px;
+    background:#6d6d6d;
+    color:white;
+    border:none;
+    cursor:pointer;
+    padding:10px 15px;
+    border-radius:5px;
 }
 
-.NavegaMenu{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
+.menu.abierto{
 
+        display:flex;
+
+    }
 @media (max-width:576px){
 
     body{
         font-size: 14px;
     }
 
-    header{
-        flex-direction: column;
-        gap: 15px;
-        background-color: #8899a5;
-        color: white;
-        font-size: 18px;
-        padding: 20px;
-        border-radius: 10px;
-        margin: 0 15px;
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
+     header{
+        flex-direction:column;
     }
 
     .btnMenu{
-        display: block;
-        width: 100%;
-        text-align: right;
+        display:block;
+        background:#6d6d6d;
+        color:white;
     }
-
-    .NavegaMenu, .btnformularioAltaUsuario, .btncerrarAltaUsuario{
-        display: flex;
-        display: none;
-        width: 100%;
-        flex-direction: column;
-    }
-
     .menu{
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        gap: 10px;
-        margin-top: 10px;
+        display:none;
+        flex-direction:column;
+        width:100%;
+        background:#6d6d6d;
+        color:white;
+        padding:20px;
     }
 
     .menu.abierto{
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        width: 100%;
-        gap: 10px;
+
+        display:flex;
+
     }
 
     .menu li{
         width: 100%;
-        text-align: center;
+        margin:0;
     }
 
     .menu li a{
-        display: block;
         width: 100%;
-        padding: 10px;
     }
-
     label{
         width: 100%;
     }
 
-    img{
-        width: 100%;
-        height: auto;
-    }
-    .logo{
-    flex-direction: row;
-    width: 100%;
-    }
+.logo{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+}
+
+
+
+.imagenLogo{
+    max-width:250px
+}
+
+.slogan{
+    font-size:18px;
+}
 
     .imagenLogo{
     max-width: 200px;
