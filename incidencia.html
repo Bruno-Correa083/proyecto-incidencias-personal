@@ -15,8 +15,6 @@
 <ul class="menu" id="menu">
 <li><a href="index.html">Inicio</a></li>
 <li><a href="incidencia.html">Incidencia</a></li>
-<li><a href="nosotros.html">Nosotros</a></li>
-<li><a href="trabajo.html">Trabajo</a></li>
 </ul>
 </nav>
    
@@ -41,7 +39,7 @@
     <input type="text" name="apellido" placeholder="Tu apellido" autocomplete="family-name" required><br/>
 
     <label>Cedula:</label>
-    <input type="number" name="cedula" placeholder="12345678" pattern="[0-9]{8}" inputmode="numeric" autocomplete="cc-number" required><br/>
+    <input type="tel" name="cedula" placeholder="12345678" pattern="09[0-9]{8}" inputmode="numeric" autocomplete="ci" oninput="this.value=this.value.replace(/[^0-9]/g,'')"><br/>
 
     <label>Laboratorio:</label>
     <select name="laboratorio" required>
