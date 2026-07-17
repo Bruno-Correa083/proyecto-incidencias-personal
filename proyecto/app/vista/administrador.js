@@ -71,3 +71,12 @@ document.addEventListener("DOMContentLoaded", () => {
             alert("Formulario guardado correctamente");
         });
     }
+
+    body.addEventListener("click", (event) => {
+        if (event.target === body) {
+            const formulario = document.querySelector(".formularioAltaUsuario");
+            if (formulario) {
+                formulario.style.display = "none";
+            }
+        }
+    });
