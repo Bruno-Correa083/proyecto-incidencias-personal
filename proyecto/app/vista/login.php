@@ -43,64 +43,39 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 ?>
 
-<?php
-echo password_hash("123456", PASSWORD_DEFAULT);
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contraseña</title>
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-        input[type="email"],
-        input[type="password"] {
-            width: 100%;
-            padding: 8px;
-            box-sizing: border-box;
-        }
-        button {
-            padding: 10px 15px;
-            background-color: #007BFF;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        .error {
-            color: red;
-        }
+    <link rel="stylesheet" href="CSS php/style.css">
     </style>
 </head>
-<body>
+<body id="Sube">
+    <header>
+    <h1>Ticket</h1>
+   <button type="button" id="btnMenu" class="btnMenu">☰</button>
+        <nav class="NavegaMenu">
+            <ul class="menu" id="menu">
+                <li><a href="index.php">Inicio</a></li>
+                <li><a href="incidencia.php">Incidencia</a></li>
+                <li><a href="tecnicos.php">Técnicos</a></li>
+                <li><a href="login.php">Login</a></li>
+                <li><a href="dashboard.php">Dashboard</a></li> 
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <h2>Formulario de inicio de sesión</h2>
+        <p>Ingrese su correo electrónico y contraseña para acceder al sistema. Por favor,
+             asegúrese de ingresar sus credenciales correctamente.</p>
+            <p>Si el usuario no tiene cuenta, puede registrarse en la sección de registro.</p>
+    </section>
+
+  <section>
     <div class="container">
         <h1>Contraseña de Empleado</h1>
-        <?php if (isset($error)) echo "<p class='error'>$error</p>"; ?>
         <form method="POST">
             <div class="form-group">
                 <label for="email">Email:</label>
@@ -111,7 +86,18 @@ echo password_hash("123456", PASSWORD_DEFAULT);
                 <input type="password" id="contrasena" name="contrasena" required>
             </div>
             <button type="submit">Iniciar Sesión</button>
-        </form>
+        </section>
+                  </form>
+<section>
+    <div>
+    <a href="index.php"><button type="button">Volver al inicio</button></a>
+    <a href="#Sube"><button type="button">↑ Subir</button></a>
     </div>
+</section>
+      
+    <footer>
+    © 2026 YoAyudo - Plataforma de Gestión y Seguimiento de Solicitudes e Incidencias
+</footer>
+    <script src="js php/administrador.js"></script>
 </body>
 </html>
