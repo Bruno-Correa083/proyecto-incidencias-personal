@@ -27,6 +27,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <header>
     <h1>Acceso de tecnicos</h1>
     <p>Área interna (simulada)</p>
+    <button type="button" id="btnMenu" class="btnMenu">☰</button>
+        <nav class="NavegaMenu">
+            <ul class="menu" id="menu">
+                <li><a href="index.php">Inicio</a></li>
+                <li><a href="incidencia.php">Incidencia</a></li>
+                <li><a href="tecnicos.php">Técnicos</a></li>
+                <li><a href="login.php">Login</a></li>
+                <li><a href="dashboard.php">Dashboard</a></li> 
+            </ul>
+        </nav>
 </header>
 
 <section>

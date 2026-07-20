@@ -60,6 +60,7 @@
     <ul class="border-box">
     <a href="incidencia.php" ><button type="button">Incidencia</button></a>
     <a href="tecnicos.php"><button type="button">Ingresa técnico</button></a>
+    <a href="registro.php"><button type="button">Registros</button></a> 
     <a href="index.php"><button type="button">Volver al inicio</button></a>
     <a href="#Sube"><button type="button">↑ Subir</button></a>
     </ul>
