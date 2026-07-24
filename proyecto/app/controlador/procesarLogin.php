@@ -1,55 +1,62 @@
 <?php
 session_start();
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: ../login.php');
+require_once "../modelo/Conexion.php";
+
+if ($_SERVER["REQUEST_METHOD"] != "POST") {
+    header("Location: ../vista/login.php");
     exit;
 }
 
-$usuario = trim($_POST['usuario'] ?? '');
-$clave = trim($_POST['clave'] ?? '');
+$email = trim($_POST["email"] ?? "");
+$contrasena = trim($_POST["contrasena"] ?? "");
 
-if ($usuario === '' || $clave === '') {
-    $_SESSION['error'] = 'Usuario y contraseña son requeridos.';
-    header('Location: ../login.php');
+if ($email == "" || $contrasena == "") {
+
+    $_SESSION["error"] = "Debe completar todos los campos.";
+
+    header("Location: ../vista/login.php");
+
     exit;
 }
 
-// Validación de ejemplo. Reemplazar con consulta a base de datos o servicio de autenticación.
-$usuariosValidos = [
-    'admin' => password_hash('1234', PASSWORD_DEFAULT),
-    'usuario' => password_hash('secret', PASSWORD_DEFAULT),
-];
+$conn = Conexion::conectar();
 
-if (isset($usuariosValidos[$usuario]) && password_verify($clave, $usuariosValidos[$usuario])) {
-    $_SESSION['usuario'] = $usuario;
-    header('Location: ../dashboard.php');
-    exit;
+$stmt = $conn->prepare("
+SELECT id, email, contrasena
+FROM empleados
+WHERE email = ?
+");
+
+$stmt->bind_param("s", $email);
+
+$stmt->execute();
+
+$resultado = $stmt->get_result();
+
+if($resultado->num_rows == 1){
+
+    $usuario = $resultado->fetch_assoc();
+
+    if(password_verify($contrasena,$usuario["contrasena"])){
+
+        $_SESSION["usuario_id"] = $usuario["id"];
+        $_SESSION["email"] = $usuario["email"];
+
+        $stmt->close();
+        $conn->close();
+        header("Location: ../vista/dashboard.php");
+
+        exit;
+
+    }
+
 }
 
-$_SESSION['error'] = 'Credenciales inválidas.';
-header('Location: ../login.php');
+$_SESSION["error"]="Usuario o contraseña incorrectos.";
+
+$stmt->close();
+$conn->close();
+header("Location: ../vista/login.php");
+
 exit;
-?>
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../public/assets/style/style.css">
-    <title>Procesando Login</title>
-
-</head>
-<body>
-    <h1>Procesando Login</h1>
-    <p>Redirigiendo...</p>
-    <p>Si no es redirigido automáticamente, haga clic <a href="../login.php">aquí</a> para volver al login.</p>
-    <script>
-        setTimeout(function() {
-            window.location.href = '../login.php';
-        }, 3000);
-    </script>
-    <p>Procesando login...</p>
-</body>
-</html>

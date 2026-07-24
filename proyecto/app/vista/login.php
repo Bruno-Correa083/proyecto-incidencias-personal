@@ -1,56 +1,17 @@
 <?php
 session_start();
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $email = $_POST['email'] ?? '';
-    $contrasena = $_POST['contrasena'] ?? '';
-
-    if (empty($email) || empty($contrasena)) {
-        $error = "Correo y contraseña requerido";
-    } else {
-        $host = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "login";
-
-        $conn = new mysqli($host, $username, $password, $dbname);
-
-        if ($conn->connect_error) {
-            die("Conexión fallida: " . $conn->connect_error);
-        }
-
-        $stmt = $conn->prepare("SELECT id, contrasena FROM empleados WHERE email = ?");
-        $stmt->bind_param("s", $email);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        if ($result->num_rows === 1) {
-            $row = $result->fetch_assoc();
-            if (password_verify($contrasena, $row['contrasena'])) {
-                $_SESSION['usuario_id'] = $row['id'];
-                header("Location: dashboard.php");
-                exit;
-            } else {
-                $error = "Contraseña incorrecta";
-            }
-        } else {
-            $error = "Usuario no encontrado";
-        }
-
-        $stmt->close();
-        $conn->close();
-    }
-}
+$error = $_SESSION["error"] ?? "";
+unset($_SESSION["error"]);
 ?>
 
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contraseña</title>
     <link rel="stylesheet" href="CSS php/style.css">
-    </style>
 </head>
 <body id="Sube">
     <header>
@@ -75,29 +36,43 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   <section>
     <div class="container">
-        <h1>Contraseña de Empleado</h1>
-        <form method="POST">
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="contrasena">Contraseña:</label>
-                <input type="password" id="contrasena" name="contrasena" required>
-            </div>
-            <button type="submit">Iniciar Sesión</button>
-        </section>
-                  </form>
-<section>
+    <h1>Empleado</h1>
+
+    <?php if($error != ""): ?>
+
+        <p class="error">
+            <?= $error ?>
+        </p>
+
+    <?php endif; ?>
+
+    <form method="POST" action="../controlador/procesarLogin.php">
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="contrasena">Contraseña:</label>
+            <input type="password" id="contrasena" name="contrasena" required>
+        </div>
+
+        <button type="submit">Iniciar Sesión</button>
+
+    </form>
+    </div>
+    </section>
+    
     <div>
     <a href="index.php"><button type="button">Volver al inicio</button></a>
     <a href="#Sube"><button type="button">↑ Subir</button></a>
-    </div>
-</section>
-      
-    <footer>
+</div>
+
+<footer>
     © 2026 YoAyudo - Plataforma de Gestión y Seguimiento de Solicitudes e Incidencias
 </footer>
-    <script src="js php/administrador.js"></script>
+
+<script src="js php/administrador.js"></script>
 </body>
 </html>

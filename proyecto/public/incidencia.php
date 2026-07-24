@@ -37,15 +37,25 @@
          <button type="button" id="btnCerrarAltaUsuario" class="btnCerrarAltaUsuario">
             Cerrar formulario
             </button>
-        <div class="formularioAltaUsuario">
+        <form method="POST" action="" class="formularioAltaUsuario">
     <label>Nombre:</label> 
     <input type="text" name="nombre" placeholder="Tu nombre" required autocomplete="given-name"><br/>
 
     <label>Apellido:</label>
     <input type="text" name="apellido" placeholder="Tu apellido" autocomplete="family-name" required><br/>
 
-    <label>Cedula:</label>
-    <input type="tel" name="cedula" placeholder="12345678" pattern="09[0-9]{8}" inputmode="numeric" autocomplete="ci" oninput="this.value=this.value.replace(/[^0-9]/g,'')"><br/>
+    <label>Cédula:</label>
+<input 
+    type="text" 
+    name="cedula" 
+    placeholder="Ej: 12345678" 
+    inputmode="numeric"
+    pattern="[0-9]{7,8}"
+    title="Ingrese solo números (7 u 8 dígitos)"
+    oninput="this.value=this.value.replace(/[^0-9]/g,'')" 
+    required
+    value="<?php echo htmlspecialchars($_POST['cedula'] ?? ''); ?>"
+><br/>
 
     <label>Laboratorio:</label>
     <select name="laboratorio" required>
@@ -74,7 +84,7 @@
     </textarea><br/>
 
     <button type="submit">Enviar consulta</button>
-    </div>
+    </form>
 </section>
 
 <section>

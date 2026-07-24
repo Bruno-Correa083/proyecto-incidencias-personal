@@ -1,24 +1,8 @@
 <?php
 date_default_timezone_set('UTC');
 $msg = '';
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nombre = trim($_POST['nombre'] ?? '');
-    $apellido = trim($_POST['apellido'] ?? '');
-    $cedula = preg_replace('/[^0-9]/', '', $_POST['cedula'] ?? '');
-    $laboratorio = trim($_POST['laboratorio'] ?? '');
-    $tipo = trim($_POST['tipo'] ?? '');
-    $descripcion = trim($_POST['descripcion'] ?? '');
 
-    if ($nombre === '' || $apellido === '' || $cedula === '' || $laboratorio === '' || $tipo === '' || $descripcion === '') {
-        $msg = 'Por favor complete todos los campos.';
-    } else {
-        $line = sprintf("%s|%s|%s|%s|%s|%s\n", date('c'), $nombre, $apellido, $cedula, $laboratorio, str_replace("\n", ' ', $tipo . ' - ' . $descripcion));
-        file_put_contents(__DIR__ . '/incidencias.txt', $line, FILE_APPEND | LOCK_EX);
-        $msg = 'Incidencia enviada correctamente.';
-        // clear values to avoid resubmission
-        $_POST = array();
-    }
-}
+
 ?>
 
 <!DOCTYPE html>
@@ -48,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <section>
     <h2>Formulario de consulta</h2>
-    <p>Por favor, completa el siguiente formulario para reportar tu incidencia. Asegúrate de proporcionar información precisa para que podamos ayudarte de manera efectiva.</p>
+    <p>Por favor, completá el siguiente formulario para reportar tu incidencia. Asegúrate de proporcionar información precisa para que podamos ayudarte de manera efectiva.</p>
 </section>  
 
 <section>
@@ -64,15 +48,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php if ($msg): ?>
         <p><?php echo htmlspecialchars($msg); ?></p>
     <?php endif; ?>
-    <form method="post" action="">
+    <form action="../controlador/procesarIncidencia.php" method="POST">
     <label>Nombre:</label> 
     <input type="text" name="nombre" placeholder="Tu nombre" required autocomplete="given-name" value="<?php echo htmlspecialchars($_POST['nombre'] ?? ''); ?>"><br/>
 
     <label>Apellido:</label>
     <input type="text" name="apellido" placeholder="Tu apellido" autocomplete="family-name" required value="<?php echo htmlspecialchars($_POST['apellido'] ?? ''); ?>"><br/>
 
-    <label>Cedula:</label>
-    <input type="tel" name="cedula" placeholder="12345678" pattern="09[0-9]{8}" inputmode="numeric" autocomplete="ci" oninput="this.value=this.value.replace(/[^0-9]/g,'')" value="<?php echo htmlspecialchars($_POST['cedula'] ?? ''); ?>"><br/>
+    <label>Cédula:</label>
+<input 
+    type="text" 
+    name="cedula" 
+    placeholder="12345678" 
+    pattern="[0-9]{7,8}" 
+    inputmode="numeric" 
+    autocomplete="off"
+    oninput="this.value=this.value.replace(/[^0-9]/g,'')" 
+    required
+    value="<?php echo htmlspecialchars($_POST['cedula'] ?? ''); ?>"
+><br/>
 
     <label>Laboratorio:</label>
     <select name="laboratorio" required>
@@ -85,20 +79,59 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <option<?php echo (($_POST['laboratorio'] ?? '')==='Laboratorio 6')?' selected':''; ?>>Laboratorio 6</option>
     </select><br/>
 
-    <label>¿Cual es el problema?:</label>
-    <select name="tipo" required>
-                    <option value="">Seleccionar</option>
-                    <option<?php echo (($_POST['tipo'] ?? '')==='No prende')?' selected':''; ?>>No prende</option>
-                    <option<?php echo (($_POST['tipo'] ?? '')==='No funcionan los perifericos')?' selected':''; ?>>No funcionan los perifericos</option>
-                    <option<?php echo (($_POST['tipo'] ?? '')==='Aparece algun error')?' selected':''; ?>>Aparece algun error</option>
-                    <option<?php echo (($_POST['tipo'] ?? '')==='Otro')?' selected':''; ?>>Otro</option>
-    </select><br/>
+    <label>¿Cuál es el problema?:</label>
+<select name="tipo" required>
+    <option value="">Seleccionar</option>
 
-    <label>En el caso que hayas eligido otro, explica cual es:</label>
-    <textarea name="descripcion" placeholder="Escribe tu problema aquí..." rows="5" required><?php echo htmlspecialchars($_POST['descripcion'] ?? ''); ?></textarea><br/>
+    <option value="No prende"
+        <?php echo (($_POST['tipo'] ?? '')==='No prende')?' selected':''; ?>>
+        No prende
+    </option>
 
-    <button type="submit">Enviar consulta</button>
-    </form>
+    <option value="No funcionan los periféricos"
+        <?php echo (($_POST['tipo'] ?? '')==='No funcionan los periféricos')?' selected':''; ?>>
+        No funcionan los periféricos
+    </option>
+
+    <option value="Error en pantalla"
+        <?php echo (($_POST['tipo'] ?? '')==='Error en pantalla')?' selected':''; ?>>
+        Error en pantalla
+    </option>
+
+    <option value="Internet no funciona"
+        <?php echo (($_POST['tipo'] ?? '')==='Internet no funciona')?' selected':''; ?>>
+        Internet no funciona
+    </option>
+
+    <option value="Equipo lento"
+        <?php echo (($_POST['tipo'] ?? '')==='Equipo lento')?' selected':''; ?>>
+        Equipo lento
+    </option>
+
+    <option value="Software no abre"
+        <?php echo (($_POST['tipo'] ?? '')==='Software no abre')?' selected':''; ?>>
+        Software no abre
+    </option>
+
+    <option value="Otro"
+        <?php echo (($_POST['tipo'] ?? '')==='Otro')?' selected':''; ?>>
+        Otro
+    </option>
+</select><br/>
+
+<label>Descripción:</label>
+<textarea name="descripcion" required></textarea>
+
+<button type="submit">Enviar</button>
+
+<?php if (isset($_GET['ok'])): ?>
+    <p style="color:green;">Incidencia enviada correctamente</p>
+<?php endif; ?>
+
+<?php if (isset($_GET['error'])): ?>
+    <p style="color:red;">Error al enviar</p>
+<?php endif; ?>
+</form>
     </div>
 </section>
 
