@@ -12,51 +12,34 @@ $email = trim($_POST["email"] ?? "");
 $contrasena = trim($_POST["contrasena"] ?? "");
 
 if ($email == "" || $contrasena == "") {
-
     $_SESSION["error"] = "Debe completar todos los campos.";
-
     header("Location: ../vista/login.php");
-
     exit;
 }
 
-$conn = Conexion::conectar();
+$conn = Conexion::conectar(); // PDO
 
 $stmt = $conn->prepare("
-SELECT id, email, contrasena
-FROM empleados
-WHERE email = ?
+    SELECT id, email, contrasena
+    FROM empleados
+    WHERE email = :email
 ");
 
-$stmt->bind_param("s", $email);
+$stmt->execute([
+    ':email' => $email
+]);
 
-$stmt->execute();
+$usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
-$resultado = $stmt->get_result();
+if ($usuario && password_verify($contrasena, $usuario["contrasena"])) {
 
-if($resultado->num_rows == 1){
+    $_SESSION["usuario_id"] = $usuario["id"];
+    $_SESSION["email"] = $usuario["email"];
 
-    $usuario = $resultado->fetch_assoc();
-
-    if(password_verify($contrasena,$usuario["contrasena"])){
-
-        $_SESSION["usuario_id"] = $usuario["id"];
-        $_SESSION["email"] = $usuario["email"];
-
-        $stmt->close();
-        $conn->close();
-        header("Location: ../vista/dashboard.php");
-
-        exit;
-
-    }
-
+    header("Location: ../vista/dashboard.php");
+    exit;
 }
 
-$_SESSION["error"]="Usuario o contraseña incorrectos.";
-
-$stmt->close();
-$conn->close();
+$_SESSION["error"] = "Usuario o contraseña incorrectos.";
 header("Location: ../vista/login.php");
-
 exit;
