@@ -29,9 +29,8 @@ unset($_SESSION["error"]);
     </header>
     <section>
         <h2>Formulario de inicio de sesión</h2>
-        <p>Ingrese su correo electrónico y contraseña para acceder al sistema. Por favor,
-             asegúrese de ingresar sus credenciales correctamente.</p>
-            <p>Si el usuario no tiene cuenta, puede registrarse en la sección de registro.</p>
+        <p>Ingresá tu correo electrónico y contraseña para acceder al sistema. Asegurate de ingresar tus credenciales correctamente.</p>
+            <p>Si el usuario no tiene cuenta, puede registrarse en la sección de Registros.</p>
     </section>
 
   <section>

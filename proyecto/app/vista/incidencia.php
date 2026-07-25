@@ -1,150 +1,141 @@
 <?php
 date_default_timezone_set('UTC');
 $msg = '';
-
-
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Incidencia</title>
-    <link rel="stylesheet" href="CSS php/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Incidencia</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
-<body id="Sube">
+<body>
 
-<header>
-    <h1>Ticket</h1>
-   <button type="button" id="btnMenu" class="btnMenu">☰</button>
-        <nav class="NavegaMenu">
-            <ul class="menu" id="menu">
-                <li><a href="index.php">Inicio</a></li>
-                <li><a href="incidencia.php">Incidencia</a></li>
-                <li><a href="tecnicos.php">Técnicos</a></li>
-                <li><a href="login.php">Login</a></li>
-                <li><a href="dashboard.php">Dashboard</a></li> 
-            </ul>
-        </nav>
-   
+<header class="bg-dark text-white p-3">
+    <div class="container d-flex justify-content-between">
+        <h1 class="h4">Sistema de Incidencias</h1>
+    </div>
 </header>
 
-<section>
-    <h2>Formulario de consulta</h2>
-    <p>Por favor, completá el siguiente formulario para reportar tu incidencia. Asegúrate de proporcionar información precisa para que podamos ayudarte de manera efectiva.</p>
-</section>  
-
-<section>
- 
-    <h2>Formulario de consulta</h2>
-        <button type="button" id="btnAltaUsuario" class="btnAltaUsuario">
-        Abrir formulario
-        </button><br/>
-         <button type="button" id="btnCerrarAltaUsuario" class="btnCerrarAltaUsuario">
-            Cerrar formulario
-            </button>
-        <div class="formularioAltaUsuario">
-    <?php if ($msg): ?>
-        <p><?php echo htmlspecialchars($msg); ?></p>
-    <?php endif; ?>
-    <form action="../controlador/procesarIncidencia.php" method="POST">
-    <label>Nombre:</label> 
-    <input type="text" name="nombre" placeholder="Tu nombre" required autocomplete="given-name" value="<?php echo htmlspecialchars($_POST['nombre'] ?? ''); ?>"><br/>
-
-    <label>Apellido:</label>
-    <input type="text" name="apellido" placeholder="Tu apellido" autocomplete="family-name" required value="<?php echo htmlspecialchars($_POST['apellido'] ?? ''); ?>"><br/>
-
-    <label>Cédula:</label>
-<input 
-    type="text" 
-    name="cedula" 
-    placeholder="12345678" 
-    pattern="[0-9]{7,8}" 
-    inputmode="numeric" 
-    autocomplete="off"
-    oninput="this.value=this.value.replace(/[^0-9]/g,'')" 
-    required
-    value="<?php echo htmlspecialchars($_POST['cedula'] ?? ''); ?>"
-><br/>
-
-    <label>Laboratorio:</label>
-    <select name="laboratorio" required>
-                    <option value="">Seleccionar</option>
-                    <option<?php echo (($_POST['laboratorio'] ?? '')==='Laboratorio 1')?' selected':''; ?>>Laboratorio 1</option>
-                    <option<?php echo (($_POST['laboratorio'] ?? '')==='Laboratorio 2')?' selected':''; ?>>Laboratorio 2</option>
-                    <option<?php echo (($_POST['laboratorio'] ?? '')==='Laboratorio 3')?' selected':''; ?>>Laboratorio 3</option>
-                    <option<?php echo (($_POST['laboratorio'] ?? '')==='Laboratorio 4')?' selected':''; ?>>Laboratorio 4</option>
-                    <option<?php echo (($_POST['laboratorio'] ?? '')==='Laboratorio 5')?' selected':''; ?>>Laboratorio 5</option>
-                    <option<?php echo (($_POST['laboratorio'] ?? '')==='Laboratorio 6')?' selected':''; ?>>Laboratorio 6</option>
-    </select><br/>
-
-    <label>¿Cuál es el problema?:</label>
-<select name="tipo" required>
-    <option value="">Seleccionar</option>
-
-    <option value="No prende"
-        <?php echo (($_POST['tipo'] ?? '')==='No prende')?' selected':''; ?>>
-        No prende
-    </option>
-
-    <option value="No funcionan los periféricos"
-        <?php echo (($_POST['tipo'] ?? '')==='No funcionan los periféricos')?' selected':''; ?>>
-        No funcionan los periféricos
-    </option>
-
-    <option value="Error en pantalla"
-        <?php echo (($_POST['tipo'] ?? '')==='Error en pantalla')?' selected':''; ?>>
-        Error en pantalla
-    </option>
-
-    <option value="Internet no funciona"
-        <?php echo (($_POST['tipo'] ?? '')==='Internet no funciona')?' selected':''; ?>>
-        Internet no funciona
-    </option>
-
-    <option value="Equipo lento"
-        <?php echo (($_POST['tipo'] ?? '')==='Equipo lento')?' selected':''; ?>>
-        Equipo lento
-    </option>
-
-    <option value="Software no abre"
-        <?php echo (($_POST['tipo'] ?? '')==='Software no abre')?' selected':''; ?>>
-        Software no abre
-    </option>
-
-    <option value="Otro"
-        <?php echo (($_POST['tipo'] ?? '')==='Otro')?' selected':''; ?>>
-        Otro
-    </option>
-</select><br/>
-
-<label>Descripción:</label>
-<textarea name="descripcion" required></textarea>
-
-<button type="submit">Enviar</button>
-
-<?php if (isset($_GET['ok'])): ?>
-    <p style="color:green;">Incidencia enviada correctamente</p>
-<?php endif; ?>
-
-<?php if (isset($_GET['error'])): ?>
-    <p style="color:red;">Error al enviar</p>
-<?php endif; ?>
-</form>
+<nav class="bg-light border-bottom">
+    <div class="container py-2">
+        <a href="index.php" class="me-3">Inicio</a>
+        <a href="incidencia.php" class="me-3">Incidencia</a>
+        <a href="tecnicos.php" class="me-3">Técnicos</a>
+        <a href="dashboard.php">Dashboard</a>
     </div>
-</section>
+</nav>
 
-<section>
-    <div>
-       <a href="index.php"><button type="button">Volver al inicio</button></a>
-    <a href="#Sube"><button type="button">↑ Subir</button></a>
-    </div>
-</section>
+<main class="container my-4">
 
-<footer>
+    <section class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6">
+
+            <div class="card shadow">
+                <div class="card-body">
+
+                    <h2 class="text-center mb-4">Registro de Incidencia</h2>
+
+                    <?php if ($msg): ?>
+                        <div class="alert alert-info">
+                            <?php echo htmlspecialchars($msg); ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <form action="../controlador/procesarIncidencia.php" method="POST">
+
+                        <div class="mb-3">
+                            <label class="form-label">Nombre</label>
+                            <input type="text" name="nombre" class="form-control" required
+                            value="<?php echo htmlspecialchars($_POST['nombre'] ?? ''); ?>">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Apellido</label>
+                            <input type="text" name="apellido" class="form-control" required
+                            value="<?php echo htmlspecialchars($_POST['apellido'] ?? ''); ?>">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Cédula</label>
+                            <input type="text" name="cedula" class="form-control"
+                                pattern="[0-9]{7,8}" required
+                                oninput="this.value=this.value.replace(/[^0-9]/g,'')"
+                                value="<?php echo htmlspecialchars($_POST['cedula'] ?? ''); ?>">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Laboratorio</label>
+                            <select name="laboratorio" class="form-select" required>
+                                <option value="">Seleccionar</option>
+                                <?php
+                                $labs = ["Laboratorio 1","Laboratorio 2","Laboratorio 3","Laboratorio 4","Laboratorio 5","Laboratorio 6"];
+                                foreach ($labs as $lab) {
+                                    $selected = (($_POST['laboratorio'] ?? '') === $lab) ? 'selected' : '';
+                                    echo "<option $selected>$lab</option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Problema</label>
+                            <select name="tipo" class="form-select" required>
+                                <option value="">Seleccionar</option>
+                                <?php
+                                $tipos = [
+                                    "No prende",
+                                    "No funcionan los periféricos",
+                                    "Error en pantalla",
+                                    "Internet no funciona",
+                                    "Equipo lento",
+                                    "Software no abre",
+                                    "Otro"
+                                ];
+                                foreach ($tipos as $t) {
+                                    $selected = (($_POST['tipo'] ?? '') === $t) ? 'selected' : '';
+                                    echo "<option $selected>$t</option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Descripción</label>
+                            <textarea name="descripcion" class="form-control" rows="4" required></textarea>
+                        </div>
+
+                        <?php if (isset($_GET['ok'])): ?>
+                            <div class="alert alert-success">Incidencia enviada correctamente</div>
+                        <?php endif; ?>
+
+                        <?php if (isset($_GET['error'])): ?>
+                            <div class="alert alert-danger">Error al enviar</div>
+                        <?php endif; ?>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">
+                                Enviar Incidencia
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</main>
+
+<footer class="bg-dark text-white text-center p-3 mt-5">
     © 2026 YoAyudo - Plataforma de Gestión y Seguimiento de Solicitudes e Incidencias
 </footer>
-<script src="js php/administrador.js"></script>
+
 </body>
 </html>
