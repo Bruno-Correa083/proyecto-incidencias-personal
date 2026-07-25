@@ -46,7 +46,7 @@ $msg = '';
                         </div>
                     <?php endif; ?>
 
-                    <form action="../controlador/procesarIncidencia.php" method="POST">
+                    <form id="formIncidencia" action="../controlador/procesarIncidencia.php" method="POST">
 
                         <div class="mb-3">
                             <label class="form-label">Nombre</label>
@@ -110,11 +110,15 @@ $msg = '';
                         </div>
 
                         <?php if (isset($_GET['ok'])): ?>
-                            <div class="alert alert-success">Incidencia enviada correctamente</div>
+                            <div class="alert alert-success">
+                                Incidencia enviada correctamente
+                            </div>
                         <?php endif; ?>
 
                         <?php if (isset($_GET['error'])): ?>
-                            <div class="alert alert-danger">Error al enviar</div>
+                            <div class="alert alert-danger">
+                                Error al enviar la incidencia
+                            </div>
                         <?php endif; ?>
 
                         <div class="d-grid">
@@ -137,5 +141,6 @@ $msg = '';
     © 2026 YoAyudo - Plataforma de Gestión y Seguimiento de Solicitudes e Incidencias
 </footer>
 
+<script src="js php/validaciones.js"></script>
 </body>
 </html>
