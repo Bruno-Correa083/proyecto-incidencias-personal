@@ -53,23 +53,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $conexion = new Conexion();
     $conn = $conexion->conectar();
 
-    $sql = "INSERT INTO incidencias (cedula, descripcion, fecha, estado)
-        VALUES (?, ?, NOW(), 'pendiente')";
-
     $stmt = $conn->prepare("
     INSERT INTO incidencias 
     (cedula, descripcion, fecha, estado, nombre, apellido, laboratorio, tipo)
-    VALUES (?, ?, NOW(), 'pendiente', ?, ?, ?, ?)
-    ");
+    VALUES (:cedula, :descripcion, NOW(), 'pendiente', :nombre, :apellido, :laboratorio, :tipo)
+");
 
-    $stmt->bind_param("ssssss",
-        $cedula,
-        $descripcion,
-        $nombre,
-        $apellido,
-        $laboratorio,
-        $tipo
-    );
+$stmt->execute([
+    ':cedula' => $cedula,
+    ':descripcion' => $descripcion,
+    ':nombre' => $nombre,
+    ':apellido' => $apellido,
+    ':laboratorio' => $laboratorio,
+    ':tipo' => $tipo
+]);
 
     if ($stmt->execute()) {
     header("Location: ../vista/incidencia.php?ok=1");
@@ -79,6 +76,4 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     exit;
 }
 
-    $stmt->close();
-    $conn->close();
 }
