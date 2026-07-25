@@ -5,117 +5,120 @@ if (!isset($_SESSION["usuario_id"])) {
     header("Location: login.php");
     exit;
 }
-
-$today = date('d/m/Y');
-
-$empezar = [
-    'Usuarios' => 1250,
-    'Proyectos' => 48,
-    'Tareas' => 324,
-    'Mensajes' => 78,
-];
-
-$alertas = [
-    'Tienes 3 tareas vencidas.',
-    'Nuevo usuario registrado hoy.',
-    'Revisa los proyectos pendientes de aprobación.',
-];
-
-$email = $_SESSION["email"] ?? "Usuario";
-
 ?>
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Panel de Administración</title>
-    <link rel="stylesheet" href="css php/style.css">
+    <title>Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
-<body id="Sube">
+<body>
 
-<header>
-    <h1>Bienvenido al Panel de Administración, <?= htmlspecialchars($email) ?></h1>
-
-    </h1>
-
-    <button type="button" id="btnMenu" class="btnMenu">☰</button>
-
-    <nav class="NavegaMenu">
-        <ul class="menu" id="menu">
-            <li><a href="index.php">Inicio</a></li>
-            <li><a href="incidencia.php">Incidencia</a></li>
-            <li><a href="tecnicos.php">Técnicos</a></li>
-            <?php if(!isset($_SESSION["usuario_id"])): ?>
-                <li><a href="login.php">Login</a></li>
-            <?php endif; ?>
-            <li><a href="dashboard.php">Dashboard</a></li>
-        </ul>
-    </nav>
-
-    <div class="imagenes">
-        <img class="imagenLogo" src="img php/logo.png" alt="Logo de SGRSI">
-        <p class="slogan"><i>Ayuda para tí, siempre.</i></p>
+<header class="bg-dark text-white p-3">
+    <div class="container d-flex justify-content-between">
+        <h1 class="h4">Dashboard</h1>
+        <a href="../controlador/logout.php" class="btn btn-danger btn-sm">Cerrar sesión</a>
     </div>
 </header>
 
-<section>
-    <h2>Usuario autenticado correctamente</h2>
-    <p>Iniciaste sesión y tenés acceso al panel de administración.</p>
-
-    <a href="../../public/cerrarSesion.php">
-    <button type="button">Cerrar sesión</button>
-    </a>
-</section>
-
-<section>
-    <h2>Resumen</h2>
-
-    <p>
-        Acá podes ver estadísticas generales del sistema.
-        Para obtener más información navegá por las secciones.
-    </p>
-
-    <h3>Estadísticas</h3>
-
-    <ul>
-        <li>Total de incidencias reportadas: 120</li>
-        <li>Total de incidencias resueltas: 95</li>
-        <li>Total de técnicos registrados: 15</li>
-    </ul>
-</section>
-
-<section>
-    <h2>Acciones rápidas</h2>
-
-    <button onclick="location.href='incidencia.php'">
-        Reportar incidencia
-    </button>
-
-    <button onclick="location.href='tecnicos.php'">
-        Ver técnicos
-    </button>
-</section>
-
-<section>
-    <div>
-        <a href="index.php">
-            <button type="button">Volver al inicio</button>
-        </a>
-
-        <a href="#Sube">
-            <button type="button">↑ Subir</button>
-        </a>
+<nav class="bg-light border-bottom">
+    <div class="container py-2">
+        <a href="index.php" class="me-3">Inicio</a>
+        <a href="incidencia.php" class="me-3">Nueva Incidencia</a>
+        <a href="dashboard.php">Dashboard</a>
     </div>
-</section>
+</nav>
 
-<footer>
+<main class="container my-4">
+
+    <h2 class="mb-4">Panel de Incidencias</h2>
+
+    <div class="row text-center mb-4">
+        <div class="col-md-4">
+            <div class="card shadow p-3">
+                <h5>Total Incidencias</h5>
+                <p id="totalIncidencias" class="fs-3 fw-bold">--</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow p-3">
+                <h5>Pendientes</h5>
+                <p id="pendientes" class="fs-3 fw-bold text-warning">--</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow p-3">
+                <h5>Resueltas</h5>
+                <p id="resueltas" class="fs-3 fw-bold text-success">--</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card shadow">
+        <div class="card-body">
+            <h5 class="mb-3">Listado de Incidencias</h5>
+
+            <table class="table table-striped table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Cédula</th>
+                        <th>Descripción</th>
+                        <th>Estado</th>
+                        <th>Fecha</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                <?php
+                require_once "../modelo/Conexion.php";
+
+                $conn = Conexion::conectar();
+
+                $sql = "SELECT cedula, descripcion, estado, fecha FROM incidencias ORDER BY fecha DESC";
+                $stmt = $conn->query($sql);
+                $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                foreach ($resultado as $row):
+                ?>
+
+                    <tr>
+                        <td><?= htmlspecialchars($row["cedula"]) ?></td>
+                        <td><?= htmlspecialchars($row["descripcion"]) ?></td>
+                        <td>
+                            <span class="badge 
+                                <?= $row["estado"] == "pendiente" ? "bg-warning" : "bg-success" ?>">
+                                <?= htmlspecialchars($row["estado"]) ?>
+                            </span>
+                        </td>
+                        <td><?= htmlspecialchars($row["fecha"]) ?></td>
+                    </tr>
+
+                <?php endforeach; ?>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</main>
+
+<footer class="bg-dark text-white text-center p-3 mt-5">
     © 2026 YoAyudo - Plataforma de Gestión y Seguimiento de Solicitudes e Incidencias
 </footer>
 
-<script src="js php/administrador.js"></script>
+<script>
+fetch("../controlador/dashboardData.php")
+.then(r => r.json())
+.then(data => {
+    document.getElementById("totalIncidencias").textContent = data.total;
+    document.getElementById("pendientes").textContent = data.pendientes;
+    document.getElementById("resueltas").textContent = data.resueltas;
+});
+</script>
 
 </body>
 </html>
