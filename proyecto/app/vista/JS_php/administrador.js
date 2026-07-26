@@ -2,13 +2,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnMenu = document.getElementById("btnMenu");
     const menu = document.getElementById("menu");
 
-    if(btnMenu && menu){
+    if (btnMenu && menu){
         btnMenu.addEventListener("click", () => {
             menu.classList.toggle("abierto");
             const abierto = menu.classList.contains("abierto");
             btnMenu.textContent = abierto ? "✖" : "☰";
-            console.log("Menu abierto:", abierto);
         });
+
         const enlaces = document.querySelectorAll("#menu a");
         enlaces.forEach(enlace => {
             enlace.addEventListener("click", () => {
@@ -72,8 +72,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    body.addEventListener("click", (event) => {
-        if (event.target === body) {
+    document.body.addEventListener("click", (event) => {
+        if (event.target === document.body) {
             const formulario = document.querySelector(".formularioAltaUsuario");
             if (formulario) {
                 formulario.style.display = "none";

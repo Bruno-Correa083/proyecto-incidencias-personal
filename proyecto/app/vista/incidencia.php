@@ -111,7 +111,7 @@ $msg = '';
 
                         <?php if (isset($_GET['ok'])): ?>
                             <div class="alert alert-success">
-                                Incidencia enviada correctamente
+                                Incidencia enviada correctamente.
                             </div>
                         <?php endif; ?>
 

@@ -1,5 +1,3 @@
-
-
 <?php
 
 $message = '';
@@ -17,17 +15,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!DOCTYPE html>
 <html lang="es">  
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <title>Acceso tecnicos</title>
-    <link rel="stylesheet" href="CSS php/style.css">
+    <link rel="stylesheet" href="CSS_php/style.css">
 </head>
 
-<body id ="Sube">
+<body>
 
 <header>
     <h1>Acceso de tecnicos</h1>
     <button type="button" id="btnMenu" class="btnMenu">☰</button>
-        <nav class="NavegaMenu">
+        <nav class="menu">
             <ul class="menu" id="menu">
                 <li><a href="index.php">Inicio</a></li>
                 <li><a href="incidencia.php">Incidencia</a></li>
@@ -51,26 +50,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <h2>Formulario de acceso</h2>
     <p>Ingresa tus credenciales a continuación:</p>
 <div>
-    <ul class="operaciones">
+  
+<ul class="operaciones">
     <ul class="login">
-<label for="cedula">Cédula de identidad:</label>
+
+    <label for="cedula">Cédula de identidad:</label>
 <input type="text" id="cedula" name="cedula" placeholder="Ej: 12345678" pattern="[0-9]{7,8}"
 inputmode="numeric" autocomplete="off" required><br/>
 
 <label for="password">Contraseña:</label>
 <input type="password" id="password" name="password" placeholder="Ingresá tu contraseña" required><br/>
 
-<a href="index.php"><button type="button">Ingresar</button></a>
-    <a href="index.php"><button type="button">Volver al inicio</button></a>
-    <a href="#Sube"><button type="button">↑ Subir</button></a>
-    </ul>
-    </ul>
-    </div>
+<button onclick="location.href='index.php'">Ingresar</button>
+<button onclick="location.href='index.php'">Volver al inicio</button>
+</ul>
+</ul>
+</div>
 </section>
 
 <footer>
     © 2026 YoAyudo - Plataforma de Gestión y Seguimiento de Solicitudes e Incidencias
 </footer>
-<script src="js php/administrador.js"></script>
+<script src="../JS_php/administrador.js" defer></script>
 </body>
 </html>

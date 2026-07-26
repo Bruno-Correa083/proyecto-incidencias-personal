@@ -25,10 +25,11 @@ p{
     margin-bottom: 10px;
     
 }
+
 i{
     display: block;
     text-align: center;
-    margin: 0 525px;
+    margin: 10px auto;
 }
 
 li {
@@ -108,12 +109,10 @@ section {
 }
 
 .logo{
-    width:100%;
-    display:center;
+    display:flex;
     justify-content:center;
     align-items:center;
     flex-direction:column;
-    text-align:center;
 }
 
 .imagenLogo{
@@ -147,18 +146,21 @@ section {
     display:inline;
     margin:0;
 }
-button, .btn, .Sube{
+button, .btn {
     background-color: #6d6d6d;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 10px 15px;
     font-size: 16px;
-    margin: 10px;
+    margin: 5px;
     border-radius: 5px;
     transition: 0.3s;
     cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #b0b0b0;
 }
 
 .imagen{
@@ -167,19 +169,23 @@ button, .btn, .Sube{
     border-radius: 10px;
 }
 
-button {
-    background-color: #6d6d6d;
-    color: black;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px; 
-    margin: 20px;
-    border-radius: 5px;
-    transition: 0.3s;
-    top:20px;
-    left: 40px; 
-    max-width: 200px;
-    bottom: 20px;
+
+.boton ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+@media (min-width: 768px) {
+    .boton ul {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    button {
+        width: auto;
+    }
 }
 
 button:hover {
@@ -281,65 +287,59 @@ label {
     max-width: 400px;
 }
 
-.NavegaMenu{
-    width:100%;
-    background-color:#3fe4db;
-    padding:20px;
-    border-radius:20px;
-    display:center;
+
+.menu {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: #6d6d6d;
+    padding: 10px;
 }
 
-.menu{
-    display:none;
-    flex-direction:column;
-    width:100%;
-    background:#6d6d6d;
-    color:white;
-    padding:20px;
-}
-.menu li{
-    margin:0;
+.menu.abierto {
+    display: flex;
 }
 
-.menu li a{
-    color:rgb(213,248,255);
-    text-decoration:none;
-    font-size:16px;
-    padding:10px 15px;
-    border-radius:5px;
-    display:block;
-    transition:0.3s;
+.btnMenu {
+    display: block;
+    background: #6d6d6d;
+    color: white;
 }
 
-.menu li a:hover{
-    background-color:#50e8ff;
-    color:rgb(88,138,255);
+.menu li a {
+    display: block;
+    color: white;
+    padding: 10px;
+    text-decoration: none;
 }
 
-.btnMenu{
-    display:block;
-    font-size:28px;
-    background:#6d6d6d;
-    color:white;
-    border:none;
-    cursor:pointer;
-    padding:10px 15px;
-    border-radius:5px;
-}
 
-.menu.abierto{
+@media (min-width: 768px) {
 
-        display:flex;
-
+    header {
+        flex-direction: row;
+        justify-content: space-between;
     }
+
+    .btnMenu {
+        display: none;
+    }
+
+    .menu {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+}
 @media (max-width:576px){
 
     body{
         font-size: 14px;
     }
 
-     header{
-        flex-direction:column;
+     header {
+    flex-direction: column;
+    text-align: center;
     }
 
     .btnMenu{
@@ -375,30 +375,30 @@ label {
     }
 
 .logo{
-    width:100%;
     display:flex;
     justify-content:center;
     align-items:center;
     flex-direction:column;
-    text-align:center;
 }
 
 
-
-.imagenLogo{
-    max-width:250px
+.imagenLogo {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
 }
 
 .slogan{
     font-size:18px;
 }
 
-    .imagenLogo{
-    max-width: 200px;
-    }
+    .imagenLogo {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+}
 }
 
-/*nosotros*/
 .nosotros{
     max-width: 900px;
     margin: auto;

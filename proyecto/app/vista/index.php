@@ -4,9 +4,11 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <title>SGRSI-YoAyudo</title>
-    <link rel="stylesheet" href="CSS php/style.css">
+    <link rel="stylesheet" href="CSS_php/style.css">
+<script src="JS_php/administrador.js"></script>
 </head>
 <body id="Sube">
  <header>
@@ -24,7 +26,7 @@
         </nav>
 
         <div class="imagenes">
-        <img class="imagenLogo" src="img php/logo.png" alt="Logo de SGRSI">
+        <img class="imagenLogo" src="img_php/logo.png" alt="Logo de SGRSI">
         <p class="slogan"><i>Ayuda para ti, siempre.</i></p>
         </div>
     </header>
@@ -58,12 +60,12 @@
 <section class="boton">
     <div>
     <ul class="border-box">
-    <a href="incidencia.php" ><button type="button">Incidencia</button></a>
-    <a href="tecnicos.php"><button type="button">Ingresa técnico</button></a>
-    <a href="registro.php"><button type="button">Registros</button></a> 
-    <a href="index.php"><button type="button">Volver al inicio</button></a>
-    <a href="#Sube"><button type="button">↑ Subir</button></a>
-    </ul>
+    <li><a href="incidencia.php" class="btn">Incidencia</a></li>
+    <li><a href="tecnicos.php" class="btn">Ingresa técnico</a></li>
+    <li><a href="registro.php" class="btn">Registros</a></li>
+    <li><a href="index.php" class="btn">Volver al inicio</a></li>
+    <li><a href="#Sube" class="btn">↑ Subir</a></li>
+</ul>
     </div>
 </section>
 
@@ -72,4 +74,5 @@
 </footer>
 <script src="js php/administrador.js"></script>
 </body>
+
 </html>

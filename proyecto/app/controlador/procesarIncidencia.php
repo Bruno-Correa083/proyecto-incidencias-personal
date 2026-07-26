@@ -1,5 +1,9 @@
 <?php
 
+session_start();
+
+$empleado_id = $_SESSION["usuario_id"];
+
 require_once "../modelo/Conexion.php";
 
 function limpiar($dato) {
@@ -54,21 +58,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $conn = $conexion->conectar();
 
     $stmt = $conn->prepare("
-    INSERT INTO incidencias 
-    (cedula, descripcion, fecha, estado, nombre, apellido, laboratorio, tipo)
-    VALUES (:cedula, :descripcion, NOW(), 'pendiente', :nombre, :apellido, :laboratorio, :tipo)
+INSERT INTO incidencias 
+(cedula, descripcion, fecha, estado, nombre, apellido, laboratorio, tipo, empleado_id)
+VALUES (:cedula, :descripcion, NOW(), 'pendiente', :nombre, :apellido, :laboratorio, :tipo, :empleado_id)
 ");
 
-$stmt->execute([
+$resultado = $stmt->execute([
     ':cedula' => $cedula,
     ':descripcion' => $descripcion,
     ':nombre' => $nombre,
     ':apellido' => $apellido,
     ':laboratorio' => $laboratorio,
-    ':tipo' => $tipo
+    ':tipo' => $tipo,
+    ':empleado_id' => $empleado_id
 ]);
 
-    if ($stmt->execute()) {
+if ($resultado) {
     header("Location: ../vista/incidencia.php?ok=1");
     exit;
 } else {
